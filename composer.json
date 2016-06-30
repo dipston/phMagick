@@ -1,0 +1,10 @@
+{
+  "name": "dipston/phMagick",
+  "type": "library",
+  "description": "Legacy phmagick library",
+  "homepage": "https://github.com/dipston/phMagick",
+  "license": "MIT",
+  "autoload" : {
+    "files": ["phmagick.php"]
+  }
+}
