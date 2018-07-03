@@ -37,6 +37,7 @@ class phMagick_resize{
         $height = $height == 0 ? '' : $height ;
 
         $cmd = $p->getBinary('convert');
+        //$cmd .=  ' -background "#FFFFFF" -flatten';
         $cmd .=  ' -scale "'. $width .'x'. $height . $modifier ;
         $cmd .= '" -quality '. $p->getImageQuality() ;
         $cmd .=  ' -strip ';
