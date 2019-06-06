@@ -143,6 +143,35 @@ class phMagick_color {
 		$p->setHistory($p->getDestination());
 		return  $p ;
 	}
+    
+    function replaceColor(phmagick $p, $from, $to, $fuzz = 80){
+        $cmd  = $p->getBinary('convert');
+
+        $cmd .= ' "' . $p->getSource().'"'  ;
+        $cmd .= ' -fill "'.$to .'"' ;
+        $cmd .= ' -opaque "'.$from .'"' ;
+        $cmd .= ' -fuzz '.$fuzz.'%' ;
+        $cmd .= ' "' . $p->getDestination() .'"' ;
+        
+        $p->execute($cmd);
+        $p->setSource($p->getDestination());
+        $p->setHistory($p->getDestination());
+        return  $p ;
+    }
+
+    function setTransparent(phmagick $p, $from, $fuzz = 90){
+        $cmd  = $p->getBinary('convert');
+
+        $cmd .= ' "' . $p->getSource().'"'  ;
+        $cmd .= ' -transparent "'.$from .'"' ;
+        $cmd .= ' -fuzz '.$fuzz.'%' ;
+        $cmd .= ' "' . $p->getDestination() .'"' ;
+        
+        $p->execute($cmd);
+        $p->setSource($p->getDestination());
+        $p->setHistory($p->getDestination());
+        return  $p ;
+    }
 	
 }
 ?>
